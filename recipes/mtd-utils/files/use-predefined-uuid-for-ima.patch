@@ -1,19 +1,18 @@
 diff --git a/ubifs-utils/mkfs.ubifs/mkfs.ubifs.c b/ubifs-utils/mkfs.ubifs/mkfs.ubifs.c
-index 6323dd4..e051fd8 100644
+index fd3cf8b..f612ed9 100644
 --- a/ubifs-utils/mkfs.ubifs/mkfs.ubifs.c
 +++ b/ubifs-utils/mkfs.ubifs/mkfs.ubifs.c
-@@ -2139,6 +2139,10 @@ static int write_super(void)
+@@ -2236,6 +2236,9 @@ static int write_super(void)
  {
  	struct ubifs_sb_node sup;
  
 +	unsigned char data_uuid[] = { 0x7A, 0x0C, 0x93, 0xE9, 0xD2, 0xFD, 0x46, 0x55, 0xA9, 0x4F, 0xA4, 0x57, 0x1A, 0xC9, 0xB5, 0xF7 };
 +	unsigned char rfs_uuid[] = { 0x6F, 0x2B, 0x9A, 0x5B, 0x32, 0x07, 0x4D, 0x8B, 0x84, 0x7C, 0x0F, 0x4F, 0xF9, 0xD9, 0x04, 0x85 };
-+	unsigned char cache_uuid[] = { 0x3C, 0xFC, 0xC4, 0xDC, 0x26, 0x69, 0x40, 0xE6, 0xA0, 0x70, 0xC9, 0x20, 0x87, 0x1F, 0x5E, 0xF8 };
 +
  	memset(&sup, 0, UBIFS_SB_NODE_SZ);
  
  	sup.ch.node_type  = UBIFS_SB_NODE;
-@@ -2158,13 +2162,25 @@ static int write_super(void)
+@@ -2255,13 +2258,23 @@ static int write_super(void)
  	sup.default_compr = cpu_to_le16(c->default_compr);
  	sup.rp_size       = cpu_to_le64(c->rp_size);
  	sup.time_gran     = cpu_to_le32(DEFAULT_TIME_GRAN);
@@ -25,8 +24,6 @@ index 6323dd4..e051fd8 100644
 -		printf("\tUUID:         %s\n", s);
 +	if (strncmp("usrfs.ubifs", &output[((int)strlen(output) - 11)], 11) == 0) {
 +		memcpy(sup.uuid, data_uuid, 16);
-+	} else if (strncmp("cachefs.ubifs", &output[((int)strlen(output) - 13)], 13) == 0) {
-+		memcpy(sup.uuid, cache_uuid, 16);
 +	} else if (strncmp("mdm9650.ubifs", &output[((int)strlen(output) - 13)], 13) == 0) {
 +		memcpy(sup.uuid, rfs_uuid, 16);
 +	} else if (strncmp("mdm9650-2k.ubifs", &output[((int)strlen(output) - 16)], 16) == 0) {
