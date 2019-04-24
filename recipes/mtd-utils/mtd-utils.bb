@@ -74,7 +74,7 @@ do_install () {
 PACKAGES =+ "mtd-utils-jffs2 mtd-utils-ubifs mtd-utils-misc"
 
 FILES_mtd-utils-jffs2 = "${sbindir}/mkfs.jffs2 ${sbindir}/jffs2dump ${sbindir}/jffs2reader ${sbindir}/sumtool"
-FILES_mtd-utils-ubifs = "${sbindir}/mkfs.ubifs ${sbindir}/ubi* ${sbindir}/flash_erase ${sbindir}/nandwrite $(sbindir)/nanddump"
+FILES_mtd-utils-ubifs = "${sbindir}/mkfs.ubifs ${sbindir}/ubi* ${sbindir}/flash_erase ${sbindir}/nandwrite ${sbindir}/nanddump"
 FILES_mtd-utils-misc = "${sbindir}/nftl* ${sbindir}/ftl* ${sbindir}/rfd* ${sbindir}/doc* ${sbindir}/serve_image ${sbindir}/recv_image"
 
 BBCLASSEXTEND = "native"
