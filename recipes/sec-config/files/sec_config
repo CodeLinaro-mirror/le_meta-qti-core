@@ -315,3 +315,6 @@
 /* Allow LOCATION_REMOTE_CLIENT to be used by gps process */
 5001:4294967295:1021
 /* Allow QSOCKET_LOCATION_HAL_DAEMON_ID to be used by gps process */
+/* Allow thermal-engine user to communicate with QMI TS and QMI TMD */
+23:4294967295:1000
+24:4294967295:1000
