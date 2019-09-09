@@ -318,3 +318,5 @@
 /* Allow thermal-engine user to communicate with QMI TS and QMI TMD */
 23:4294967295:1000
 24:4294967295:1000
+/* Allow csd_server to communicate with QMI SAP *
+25:4294967295:29:3004
