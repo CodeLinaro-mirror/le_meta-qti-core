@@ -20,7 +20,10 @@ S = "${WORKDIR}/mtd-utils"
 # xattr support creates an additional compile-time dependency on acl because
 # the sys/acl.h header is needed. libacl is not needed and thus enabling xattr
 # regardless whether acl is enabled or disabled in the distro should be okay.
-PACKAGECONFIG ?= "${@bb.utils.filter('DISTRO_FEATURES', 'xattr selinux', d)}"
+PACKAGECONFIG = " \
+               ${@bb.utils.contains('DISTRO_FEATURES', 'xattr', 'xattr','',d)} \
+               ${@bb.utils.contains('DISTRO_FEATURES', 'selinux', 'selinux','',d)} \
+                "
 PACKAGECONFIG[xattr] = ",,acl,"
 PACKAGECONFIG[selinux] = "--with-selinux,--without-selinux,libselinux libselinux-native,"
 
