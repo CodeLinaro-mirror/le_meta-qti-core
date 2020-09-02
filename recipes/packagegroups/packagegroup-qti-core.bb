@@ -9,6 +9,6 @@ PACKAGES = ' \
 '
 
 RDEPENDS_${PN} = " \
-    mtd-utils \
+    mtd-utils-ubifs \
     sec-config \
 "
