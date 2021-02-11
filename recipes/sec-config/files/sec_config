@@ -326,3 +326,5 @@
 71:4294967295:1000:3004
 /* Allow fs-scrub-daemon to communicate with QMI FDS service */
 45:4294967295:1000
+/* Allow fs-scrub-daemon to communicate with QMI FS_HMS service */
+84:4294967295:1000
