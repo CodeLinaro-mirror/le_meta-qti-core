@@ -322,3 +322,5 @@
 24:4294967295:1000
 /* Allow csd_server to communicate with QMI SAP *
 25:4294967295:29:3004
+/* Allow fs-scrub-daemon to communicate with QMI FDS service */
+45:4294967295:1000
