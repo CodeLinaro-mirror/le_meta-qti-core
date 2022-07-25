@@ -1,0 +1,1 @@
+QTICORE:=sec-config
