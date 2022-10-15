@@ -9,7 +9,7 @@ PACKAGES = ' \
     packagegroup-qti-core \
 '
 
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
     mtd-utils-ubifs \
     sec-config \
 "
