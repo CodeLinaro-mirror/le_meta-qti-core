@@ -7,6 +7,7 @@ PROVIDES = "${PACKAGES}"
 
 PACKAGES = ' \
     packagegroup-qti-core \
+    packagegroup-qti-core-recovery \
 '
 
 RDEPENDS_${PN} = " \
