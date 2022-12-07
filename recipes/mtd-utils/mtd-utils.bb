@@ -20,9 +20,13 @@ S = "${WORKDIR}/mtd-utils"
 # xattr support creates an additional compile-time dependency on acl because
 # the sys/acl.h header is needed. libacl is not needed and thus enabling xattr
 # regardless whether acl is enabled or disabled in the distro should be okay.
-PACKAGECONFIG ?= "${@bb.utils.filter('DISTRO_FEATURES', 'xattr selinux', d)}"
+PACKAGECONFIG ?= " \
+    ${@bb.utils.filter('DISTRO_FEATURES', 'xattr selinux', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES_NATIVE', 'vbleima', 'ima-evm', '',d)} \
+"
 PACKAGECONFIG[xattr] = ",,acl,"
 PACKAGECONFIG[selinux] = "--with-selinux,--without-selinux,libselinux libselinux-native,"
+PACKAGECONFIG[ima-evm] = "--with-ima-evm,--without-ima-evm,,"
 
 EXTRA_OEMAKE = "'CC=${CC}' 'RANLIB=${RANLIB}' 'AR=${AR}' 'CFLAGS=${CFLAGS} ${@bb.utils.contains('PACKAGECONFIG', 'xattr', '', '-DWITHOUT_XATTR', d)} -I${S}/include -I${S}/ubi-utils/include -I${S}/tests/fs-tests/lib' 'BUILDDIR=${S}'"
 
