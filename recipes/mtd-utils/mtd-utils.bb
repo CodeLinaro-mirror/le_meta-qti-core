@@ -76,11 +76,14 @@ do_install () {
 }
 
 PACKAGES =+ "mtd-utils-jffs2 mtd-utils-ubifs mtd-utils-misc"
+# Dual NAND recovery mtd-utils support
+PACKAGES =+ "${@bb.utils.contains('MACHINE_FEATURES', 'dual-nand-recovery', 'mtd-utils-parttool', '', d)}"
 
 FILES_mtd-utils-jffs2 = "${sbindir}/mkfs.jffs2 ${sbindir}/jffs2dump ${sbindir}/jffs2reader ${sbindir}/sumtool"
 FILES_mtd-utils-ubifs = "${sbindir}/mkfs.ubifs ${sbindir}/ubi* ${sbindir}/flash_erase ${sbindir}/nandwrite $(sbindir)/nanddump"
 FILES_mtd-utils-misc = "${sbindir}/nftl* ${sbindir}/ftl* ${sbindir}/rfd* ${sbindir}/doc* ${sbindir}/serve_image ${sbindir}/recv_image"
-
+# Dual NAND recovery mtdpart tools support
+FILES_mtd-utils-parttool = "${@bb.utils.contains('MACHINE_FEATURES', 'dual-nand-recovery', '${sbindir}/mtdpart', '', d)}"
 BBCLASSEXTEND = "native"
 
 # git/.compr.c.dep:46: warning: NUL character seen; rest of line ignored
