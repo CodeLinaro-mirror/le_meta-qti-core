@@ -14,14 +14,14 @@ PV = "2.0.2"
 
 SRCREV = "bc63d36e39f389c8c17f6a8e9db47f2acc884659"
 
-SRC_URI = "git://source.codeaurora.org/quic/filesystems/fs/external/mtd-utils;protocol=git;nobranch=1;rev=bc63d36e39f389c8c17f6a8e9db47f2acc884659 \
-           file://add-exclusion-to-mkfs-jffs2-git-2.patch \
-           file://0001-Revert-Return-correct-error-number-in-ubi_get_vol_in.patch \
-"
+SRC_URI = "git://git.codelinaro.org/clo/filesystems/fs/external/mtd-utils;protocol=https;nobranch=1;rev=bc63d36e39f389c8c17f6a8e9db47f2acc884659"
+
+S = "${WORKDIR}/git"
+
+SRC_URI += "file://add-exclusion-to-mkfs-jffs2-git-2.patch \
+            file://0001-Revert-Return-correct-error-number-in-ubi_get_vol_in.patch"
 
 SRC_URI_append = "${@bb.utils.contains('DISTRO_FEATURES', 'vbleima', ' file://use-predefined-uuid-for-ima.patch', '',d)}"
-
-S = "${WORKDIR}/git/"
 
 EXTRA_OECONF += "--enable-install-tests"
 
