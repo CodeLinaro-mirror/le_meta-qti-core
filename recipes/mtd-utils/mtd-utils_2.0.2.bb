@@ -14,7 +14,7 @@ PV = "2.0.2"
 
 SRCREV = "bc63d36e39f389c8c17f6a8e9db47f2acc884659"
 
-SRC_URI = "git://source.codeaurora.org/quic/filesystems/fs/external/mtd-utils;protocol=git;nobranch=1;rev=bc63d36e39f389c8c17f6a8e9db47f2acc884659 \
+SRC_URI = "git://git.codelinaro.org/clo/filesystems/fs/external/mtd-utils;protocol=https;nobranch=1;rev=bc63d36e39f389c8c17f6a8e9db47f2acc884659 \
            file://add-exclusion-to-mkfs-jffs2-git-2.patch \
            file://0001-Revert-Return-correct-error-number-in-ubi_get_vol_in.patch \
 "
