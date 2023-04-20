@@ -8,9 +8,11 @@ PROVIDES = "${PACKAGES}"
 PACKAGES = ' \
     packagegroup-qti-core \
     packagegroup-qti-core-recovery \
+    packagegroup-qti-core-vm \
 '
 
 RDEPENDS_${PN} = " \
     mtd-utils-ubifs \
     sec-config \
 "
+RDEPENDS_packagegroup-qti-core-vm = " "
