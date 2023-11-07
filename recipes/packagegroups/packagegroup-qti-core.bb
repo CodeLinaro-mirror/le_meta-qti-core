@@ -1,6 +1,7 @@
 SUMMARY = "Group to bring Core Open Source Packages"
 LICENSE = "BSD-3-Clause"
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit packagegroup
 
 PROVIDES = "${PACKAGES}"
