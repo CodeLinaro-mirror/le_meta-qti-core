@@ -10,7 +10,7 @@ PACKAGES = ' \
     packagegroup-qti-core-recovery \
 '
 
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
     mtd-utils-ubifs \
     sec-config \
 "
