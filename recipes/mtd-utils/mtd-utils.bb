@@ -10,7 +10,7 @@ inherit autotools pkgconfig update-alternatives
 DEPENDS = "zlib lzo e2fsprogs util-linux"
 DEPENDS += "${@bb.utils.contains("DISTRO_FEATURES", "selinux", "libselinux", "", d)}"
 
-PV = "2.0.0"
+PV = "2.0.2"
 
 FILESPATH =+ "${WORKSPACE}/filesystems:"
 SRC_URI = "file://mtd-utils"
