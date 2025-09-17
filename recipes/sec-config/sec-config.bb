@@ -15,7 +15,7 @@ do_install() {
   install -m 0444 ${S}/sec_config -D ${D}${sysconfdir}/sec_config
 }
 
-FILES_${PN} = "${sysconfdir}/*"
+FILES:${PN} = "${sysconfdir}/*"
 
 
 
