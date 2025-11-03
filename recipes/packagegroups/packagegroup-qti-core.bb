@@ -12,8 +12,8 @@ PACKAGES = ' \
     packagegroup-qti-core-vm \
 '
 
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
     mtd-utils-ubifs \
     sec-config \
 "
-RDEPENDS_packagegroup-qti-core-vm = " "
+RDEPENDS:packagegroup-qti-core-vm = " "
