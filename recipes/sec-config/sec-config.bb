@@ -1,4 +1,4 @@
-inherit autotools  pkgconfig
+inherit autotools pkgconfig
 
 DESCRIPTION = "sec-config file for sensors"
 LICENSE = "BSD-3-Clause"
@@ -7,9 +7,10 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/${LICENSE};md5
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI   = "file://sec_config"
-S = "${WORKDIR}/"
+S = "${UNPACKDIR}/"
 
 do_compile[noexec] = "1"
+do_configure[noexec] = "1"
 
 do_install() {
   install -m 0444 ${S}/sec_config -D ${D}${sysconfdir}/sec_config
