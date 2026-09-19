@@ -1,7 +1,7 @@
 SUMMARY = "Tools for managing memory technology devices"
 HOMEPAGE = "http://www.linux-mtd.infradead.org/"
 SECTION = "base"
-LICENSE = "GPLv2+"
+LICENSE = "GPL-2.0-or-later"
 LIC_FILES_CHKSUM = "file://COPYING;md5=0636e73ff0215e8d672dc4c32c317bb3 \
                     file://include/common.h;beginline=1;endline=17;md5=ba05b07912a44ea2bf81ce409380049c"
 
@@ -15,7 +15,7 @@ PV = "2.0.0"
 FILESEXTRAPATHS:prepend := "${WORKSPACE}/filesystems:"
 SRC_URI = "file://mtd-utils"
 
-S = "${WORKDIR}/mtd-utils"
+S = "${UNPACKDIR}/mtd-utils"
 
 # xattr support creates an additional compile-time dependency on acl because
 # the sys/acl.h header is needed. libacl is not needed and thus enabling xattr
@@ -54,22 +54,26 @@ ALTERNATIVE_LINK_NAME[flash_eraseall] = "${sbindir}/flash_eraseall"
 ALTERNATIVE_PRIORITY[flash_eraseall] = "100"
 
 MTD_TEST_BIN_PATH = "${WORKSPACE}/filesystems/bin/target/mtd-utils"
+
 do_install () {
-	oe_runmake install DESTDIR=${D} SBINDIR=${sbindir} MANDIR=${mandir} INCLUDEDIR=${includedir}
+        oe_runmake install DESTDIR=${D} SBINDIR=${sbindir} MANDIR=${mandir} INCLUDEDIR=${includedir}
 
-	mkdir -p ${MTD_TEST_BIN_PATH}/fstests/
-	find ${S}/../build/tests/fs-tests/ -executable -type f -exec cp {} ${MTD_TEST_BIN_PATH}/fstests/ \;
+        mkdir -p ${MTD_TEST_BIN_PATH}/fstests/
+        find ${B}/tests/fs-tests/ -executable -type f \
+                -exec cp {} ${MTD_TEST_BIN_PATH}/fstests/ \;
 
-	mkdir -p ${MTD_TEST_BIN_PATH}/ubi-tests/
-	for test in ${ubi_tests}; do
-		cp ${S}/../build/$test ${MTD_TEST_BIN_PATH}/ubi-tests/
-	done
+        mkdir -p ${MTD_TEST_BIN_PATH}/ubi-tests/
+        for test in ${ubi_tests}; do
+                cp ${B}/$test ${MTD_TEST_BIN_PATH}/ubi-tests/
+        done
 
-	mkdir -p ${MTD_TEST_BIN_PATH}/checkfs/
-	for test in ${checkfs_tests}; do
-		cp ${S}/../build/$test ${MTD_TEST_BIN_PATH}/checkfs/
-	done
+        mkdir -p ${MTD_TEST_BIN_PATH}/checkfs/
+        for test in ${checkfs_tests}; do
+                cp ${B}/$test ${MTD_TEST_BIN_PATH}/checkfs/
+        done
 }
+
+
 
 PACKAGES =+ "mtd-utils-jffs2 mtd-utils-ubifs mtd-utils-misc"
 
